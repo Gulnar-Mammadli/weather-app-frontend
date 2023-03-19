@@ -1,15 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Weather logo" src="./assets/weather.png">
+  <DataComponent msg="Welcome to Weather App"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import FormComponent from './components/FormComponent.vue'
+// import ForecastComponent from './components/ForecastComponent.vue'
+import DataComponent from './components/DataComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // FormComponent,
+    // ForecastComponent,
+    DataComponent
   }
 }
 </script>
