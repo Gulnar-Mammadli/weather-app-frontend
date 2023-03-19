@@ -1,18 +1,14 @@
 <template>
-  <img alt="Weather logo" src="./assets/weather.png">
-  <DataComponent msg="Welcome to Weather App"/>
+  <img alt="Weather logo" src="./assets/forecast.png">
+  <DataComponent msg="Welcome to Forecast App!"/>
 </template>
 
 <script>
-// import FormComponent from './components/FormComponent.vue'
-// import ForecastComponent from './components/ForecastComponent.vue'
 import DataComponent from './components/DataComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    // FormComponent,
-    // ForecastComponent,
     DataComponent
   }
 }
