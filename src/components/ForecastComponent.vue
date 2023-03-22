@@ -4,6 +4,7 @@
     <p>Phenomenon: {{ forecast.phenomenon }}</p>
     <p>Min temperature: {{ forecast.tempMin || '-' }}</p>
     <p>Max temperature: {{ forecast.tempMax || '-' }}</p>
+    <p> {{ averageTemp || '-' }} </p>
   </div>
   <div v-else>
     <p>No forecast available</p>
@@ -14,7 +15,8 @@
 export default {
   name: 'ForecastComponent',
   props: {
-    forecast: Object
+    forecast: Object,
+    averageTemp: String
   }
 }
 </script>
