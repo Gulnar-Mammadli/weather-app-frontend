@@ -1,9 +1,8 @@
 <template>
   <div>
     <h1>{{ msg }}</h1>
-    <FormComponent @submit="getForecast" @button="getNightForecast"></FormComponent>
-    <!-- <FormComponent @submit="getNightForecast" name="getNightForecast"></FormComponent> -->
-    <ForecastComponent :forecast="forecast" :averageTemp="averageTemp"></ForecastComponent>
+    <FormComponent  @button="getForecast"></FormComponent>
+    <ForecastComponent :forecast="forecast" :dayTextInfo="dayTextInfo" :nightTextInfo="nightTextInfo" ></ForecastComponent>
   </div>
 </template>
 
@@ -23,28 +22,27 @@ export default {
   data() {
     return {
       forecast: null,
-      averageTemp: null
+      dayTextInfo: null,
+      nightTextInfo: null
     }
   },
   methods: {
-
-    async getForecast(form) {
-      const response = await fetch(`http://localhost:8080/api/date/${form.date}/place/${form.place}`)
-      const response1 = await fetch(`http://localhost:8080/api/average/date/${form.date}`)
-      // this.forecast = await response.json()
-      // this.averageTemp = await response1.json()
-
-      const forecast = await response.json()
-      const averageTemp = await response1.text()
-      this.forecast = forecast
-      this.averageTemp = averageTemp
-    },
-
     
-    async getNightForecast(form) {
-          const response = await fetch(`http://localhost:8080/api/night/date/${form.date}/place/${form.place}`)
-          this.forecast = await response.json()
-        }
+    async getForecast(form) {
+      
+          const dayResponse = await fetch(`http://localhost:8080/api/date/${form.date}/place/${form.place}`)  
+          const list = await fetch(`http://localhost:8080/api/text/date/${form.date}`)
+          const textList = await list.json();
+          const dayTextInfo = textList[0]
+          const nightTextInfo = textList[1]        
+          const forecastDay = await dayResponse.json()
+
+          this.forecast = forecastDay
+          this.forecast.dayPhenomenon = forecastDay.phenomenon
+          this.dayTextInfo = dayTextInfo
+          this.nightTextInfo = nightTextInfo
+
   }
 }
+};
 </script>

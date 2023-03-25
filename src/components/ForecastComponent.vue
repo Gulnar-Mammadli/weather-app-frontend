@@ -1,22 +1,25 @@
 <template>
   <div v-if="forecast">
-    <h2>City name: {{ forecast.name }}</h2>
-    <p>Phenomenon: {{ forecast.phenomenon }}</p>
+    <p>City name: {{ forecast.name}}</p>
+    <p>Day Phenomenon: {{ forecast.dayPhenomenon }}</p>
     <p>Min temperature: {{ forecast.tempMin || '-' }}</p>
     <p>Max temperature: {{ forecast.tempMax || '-' }}</p>
-    <p> {{ averageTemp || '-' }} </p>
+    <p>Info for day: {{dayTextInfo || '-' }}</p>
+    <p>Info for night: {{nightTextInfo || '-'}}</p>
   </div>
   <div v-else>
-    <p>No forecast available</p>
+    <p>No forecast available for entered city or date</p>
   </div>
+  
 </template>
-
+// v-if="forecast"
 <script>
 export default {
   name: 'ForecastComponent',
   props: {
     forecast: Object,
-    averageTemp: String
+    dayTextInfo: String,
+    nightTextInfo: String
   }
 }
 </script>

@@ -4,8 +4,7 @@
     <input id="date" v-model="form.date" type="date">
     <label for="place">Place:</label>
     <input id="place" v-model="form.place" type="text">
-    <button type="submit" name="getForecast">Get Day Forecast</button>
-    <button type="button" name="getNightForecast" @click="getNightForecast"> Get Night Forecast </button>
+    <button type="button" name="getForecast" @click="getForecast"> Get Forecast </button>
   </form>
 </template>
 
@@ -21,10 +20,10 @@ export default {
     }
   },
   methods: {
-    submitForm() {
-      this.$emit('submit', this.form)
-    },
-    getNightForecast() {
+    // submitForm() {
+    //   this.$emit('button1', this.form)
+    // },
+    getForecast() {
       this.$emit('button', this.form)
     }
   }
