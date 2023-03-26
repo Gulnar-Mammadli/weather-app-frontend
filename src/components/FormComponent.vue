@@ -20,9 +20,6 @@ export default {
     }
   },
   methods: {
-    // submitForm() {
-    //   this.$emit('button1', this.form)
-    // },
     getForecast() {
       this.$emit('button', this.form)
     }
